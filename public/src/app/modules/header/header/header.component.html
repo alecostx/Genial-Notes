@@ -10,7 +10,7 @@
             <span>Desenvolvedores</span>
             <span class="hover-header">Desenvolvedores</span>
         </li>
-        <li *ngIf="isLoggedUser">Olá, {{ nameUser }}</li>
+        <li *ngIf="isLoggedUser" class="user">Olá, {{ nameUser }}</li>
         <li *ngIf="isLoggedUser" routerLink="/login" class="button register" (click)="clearCredentials()">Sair</li>
         <li *ngIf="!isLoggedUser" routerLink="/login" (click)="setToggleNavBar()">
             <span>Login</span>

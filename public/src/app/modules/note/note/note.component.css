@@ -36,6 +36,7 @@
 
 .note:hover .delete-note {
     display: block;
+    
 }
 
 .not-selected {
@@ -202,5 +203,9 @@ textarea {
 
     .note-empty {
         justify-content: center;
+    }
+
+    .delete-note {
+        display: block;
     }
 }

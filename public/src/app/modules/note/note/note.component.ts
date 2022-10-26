@@ -95,9 +95,13 @@ export class NoteComponent implements OnInit {
       this.snackbarService.open('Nota deletada com sucesso', 'snackbar-done');
     } else {
       this.noteService
-        .deleteNotebyId(note.id!)
-        .subscribe(
-          () => this.snackbarService.open('Nota deletada com sucesso', 'snackbar-done'),
+      .deleteNotebyId(note.id!)
+      .subscribe(
+        () => { 
+            this.clearNoteEditting();
+            this.getNoteList();
+            this.snackbarService.open('Nota deletada com sucesso', 'snackbar-done') 
+          },
           () => this.snackbarService.open('Problemas para deletar a nota', 'snackbar-error')
         );
     }

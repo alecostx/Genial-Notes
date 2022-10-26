@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="box">
+        <div class="image">
+            
+        </div>
+        <form class="form" [formGroup]="formLogin" (ngSubmit)="getValidateLoginUser()">
+            <h1>Acesse sua Conta!</h1>
+            <h3>Faça Login para acessar suas notas salvas.</h3>
+            <div class="input-form">
+                <label for="">Email:</label>
+                <input type="text" placeholder="email@email.com" formControlName="email">
+            </div>
+            <div class="input-form last-input-form">
+                <label for="">Senha:</label>
+                <input type="password" placeholder="********" formControlName="password">
+            </div>
+            <div class="feedback-message">
+                <h4 [ngClass]="{'danger' : hasNotFoundLogin}">{{ message }}</h4>
+            </div>
+            <button class="button" [disabled]="loading" [ngClass]="{ 'button-disabled' : loading }">
+                <span *ngIf="!loading">Entrar</span>
+                <span *ngIf="loading" class="component-dot-flash"></span>
+            </button>
+            <p>Não possui uma conta? <a routerLink="/register">Cadastre-se</a></p>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="background-header">
+    <h1 class="logo">Genial Notes</h1>
+    <mat-icon class="menu-hamburguer" (click)="setToggleNavBar()"> {{ !isOpenNavBar ? 'menu' : 'clear' }}</mat-icon>
+    <ul class="sidebar" [ngClass]="{ 'sidebar-mobile' : isOpenNavBar}">
+        <li routerLink="" (click)="setToggleNavBar()">
+            <span>Home</span>
+            <span class="hover-header">Home</span>
+        </li>
+        <li routerLink="/developer" (click)="setToggleNavBar()">
+            <span>Desenvolvedores</span>
+            <span class="hover-header">Desenvolvedores</span>
+        </li>
+        <li *ngIf="isLoggedUser">Olá, {{ nameUser }}</li>
+        <li *ngIf="!isLoggedUser" routerLink="/login" (click)="setToggleNavBar()">
+            <span>Login</span>
+            <span class="hover-header" (click)="setToggleNavBar()">Login</span>
+        </li>
+        <li *ngIf="!isLoggedUser" routerLink="/register" class="button register" (click)="setToggleNavBar()">Cadastre-se</li>
+    </ul>
+</div>

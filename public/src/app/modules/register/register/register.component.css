@@ -1,0 +1,17 @@
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.reverse-image {
+    border-radius: 0 20px 20px 0;
+    border-right: none;
+    border-left: 2px solid var(--background-secundary-color);
+}
+
+.reverse-form {
+    border-radius: 20px 0 0 20px;
+}
+
+a {
+    text-decoration: none;
+}

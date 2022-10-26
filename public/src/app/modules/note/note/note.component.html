@@ -1,0 +1,37 @@
+<div class="box-content">
+    <div class="box-note-list" [ngClass]="{ 'box-note-list-mobile' : isEditNote }">
+        <button class="button" (click)="clearNoteEditting()">
+            <mat-icon>add</mat-icon>
+            <span>Nova Nota</span> 
+        </button>
+        <div class="notes-list">
+            <div class="note" *ngFor="let note of noteList" (click)="selectUpdateNote(note)">
+                <div class="not-selected selected" [ngClass]="{ 'selected' : getIdNoteLocalData === note.id }"></div>
+                <div class="note-local-data">
+                    <h2>{{ note.titulo }}</h2>
+                    <p>{{ note.descricao }}</p>
+                </div>
+            </div>
+            <div class="note note-empty" *ngIf="!noteList.length">
+                <h3>Você não possui nenhuma nota.</h3>
+            </div>
+        </div>
+    </div>
+    <div class="note-edit" [ngClass]="{ 'note-edit-mobile' : isEditNote }">
+        <div class="note-edit-header">
+            <mat-icon class="icon-back" (click)="clearNoteEditting()">reply</mat-icon>
+            <button class="button" [ngClass]="{ 'button-disabled' : disabledButton }" (click)="setCreateOrEditNote()" [disabled]="disabledButton">
+                <mat-icon *ngIf="!loading">done</mat-icon>
+                <span *ngIf="!loading">Salvar Nota</span>
+                <span *ngIf="loading" class="component-dot-flash"></span>
+            </button>
+        </div>
+        <div class="note-edit-content">
+            <form [formGroup]="formNote" (ngSubmit)="setCreateOrEditNote()">
+                <input type="text" placeholder="Título" formControlName="title">
+
+                <textarea formControlName="describe" placeholder="Insira a descrição aqui..."></textarea>
+            </form>
+        </div>
+    </div>
+</div>

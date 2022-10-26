@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="box reverse">
+        <div class="image reverse-image">
+            
+        </div>
+        <form class="form reverse-form" [formGroup]="formRegister" (ngSubmit)="setRegisterUser()">
+            <h1>Cadastre-se!</h1>
+            <h3>Faça seu cadastro e começe a salvar suas notas.</h3>
+            <div class="input-form">
+                <label for="">Nome:</label>
+                <input type="text" placeholder="João da Silva" formControlName="name">
+            </div>
+            <div class="input-form">
+                <label for="">Email:</label>
+                <input type="text" placeholder="email@email.com" formControlName="email">
+            </div>
+            <div class="input-form last-input-form">
+                <label for="">Senha:</label>
+                <input type="password" placeholder="********" formControlName="password">
+            </div>
+            <div class="feedback-message">
+                <h4>{{ message }}</h4>
+            </div>
+            <button class="button" [disabled]="loading" [ngClass]="{ 'button-disabled' : loading }">
+                <span *ngIf="!loading">Cadastre-se</span>
+                <span *ngIf="loading" class="component-dot-flash"></span>
+            </button>
+            <p>Já possui uma conta? <a routerLink="/login">Faça o Login</a></p>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+.developer-display {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.title {
+    padding: 40px 0 40px;
+    color: var(--destak-secundary-color);
+    font-size: 48px;
+}
+
+.developer-container {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    justify-content: center ;
+}
+
+.developer-box {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.developer-image {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    border: 1px solid var(--destak-tertiary-color);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.developer-box h1 {
+    padding: 15px 0 10px;
+    color: var(--destak-primary-color);
+}
+
+h3 {
+    color: var(--text-color);
+    font-size: 24px;
+}
+
+h4 {
+    color: var(--text-color);
+    font-weight: 100;
+}
+
+.developer-box-logos {
+    width: 80%;
+    padding: 20px 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.back {
+    background: url("https://avatars.githubusercontent.com/u/99742799?v=4");
+    background-size: cover;
+}
+
+.front {
+    background: url("https://avatars.githubusercontent.com/u/100138968?v=4");
+    background-size: cover;
+}

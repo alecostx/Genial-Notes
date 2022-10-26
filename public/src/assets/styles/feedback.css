@@ -1,0 +1,14 @@
+.feedback-message {
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--done-color);
+}
+
+.danger {
+    color: var(--error-color);
+}

@@ -20,7 +20,7 @@ namespace GenialNotes.src.Controllers
         /// <summary>
         /// Retorna todos os usuários na base
         /// </summary>
-        [HttpGet("Usuario")]
+        [HttpGet()]
         public async Task<IActionResult> GetAllUsersAsync()
         {
             var result = await _userRepository.GetUsers();
@@ -28,10 +28,10 @@ namespace GenialNotes.src.Controllers
         }
 
         /// <summary>
-        /// Retorna todos os usuários na base
+        /// Retorna um único usuário pelo id
         /// </summary>
         /// <param name="id">Registro de um usuário</param>
-        [HttpGet("Usuario/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
             var result = _userRepository.GetUserById(id);
@@ -42,7 +42,7 @@ namespace GenialNotes.src.Controllers
         /// Registra um usuário na base
         /// </summary>
         /// <param name="request">Registro de um usuário</param>
-        [HttpPost("RegistrarUsuario")]
+        [HttpPost()]
         public async Task<IActionResult> RegisterUser(RegisterUserRequest request)
         {
             var result = await _userRepository.RegisterUser(request);
@@ -50,11 +50,11 @@ namespace GenialNotes.src.Controllers
         }
 
         /// <summary>
-        /// Valida um usuário na base
+        /// Realiza a validação de login do usuário
         /// /// <param name="senha">Código de identificação da conta na Genial</param>
         /// /// <param name="email">Código de identificação da conta na Genial</param>
         /// </summary>
-        [HttpGet("ValidarLogin")]
+        [HttpGet("{email}/{senha}")]
         public async Task<IActionResult> LoginValidate(string senha, string email)
         {
             var result = await _userRepository.LoginValidate(senha, email);

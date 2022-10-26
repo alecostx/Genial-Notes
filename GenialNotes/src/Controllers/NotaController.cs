@@ -18,7 +18,7 @@ namespace GenialNotes.src.Controllers
         /// <summary>
         /// Cria uma nota
         /// </summary>
-        [HttpPost("Nota")]
+        [HttpPost()]
         public async Task<IActionResult> CreateNote(CreateNoteRequest request)
         {
             var result = await _noteRepository.CreateNote(request);
@@ -28,7 +28,7 @@ namespace GenialNotes.src.Controllers
         /// Retorna todas as notas do usuário
         /// <paramref name="idUsuario"/>
         /// </summary>
-        [HttpGet("Nota/{idUsuario}")]
+        [HttpGet("{idUsuario}")]
         public async Task<IActionResult> GetNotaByUser(int idUsuario)
         {
             var result = await _noteRepository.GetNotaByUser(idUsuario);
@@ -39,7 +39,7 @@ namespace GenialNotes.src.Controllers
         /// <paramref name="idNota"/>
         /// <paramref name="request"/>
         /// </summary>
-        [HttpPatch("Nota/{idNota}")]
+        [HttpPatch("{idNota}")]
         public async Task<IActionResult> PatchNotaById(ApiPatchNotaRequest request, int idNota)
         {
             var result = await _noteRepository.PatchNotaById(request, idNota);
@@ -49,7 +49,7 @@ namespace GenialNotes.src.Controllers
         /// Remove a nota pelo id
         /// <paramref name="idNota"/>
         /// </summary>
-        [HttpDelete("Nota/{idNota}")]
+        [HttpDelete("{idNota}")]
         public async Task<IActionResult> DeleteNotaById(int idNota)
         {
             var result = await _noteRepository.DeleteNotaById(idNota);

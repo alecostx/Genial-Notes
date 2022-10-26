@@ -3,6 +3,7 @@ global using Microsoft.EntityFrameworkCore;
 using GenialNotes.src.Interfaces;
 using GenialNotes.src.Repository;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 internal class Program
 {
@@ -18,6 +19,12 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddCors();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            // using System.Reflection;
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+        });
         builder.Services.AddControllers();
         builder.Services.AddDbContext<DataContext>(options =>
         {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { GenericReturn } from 'src/app/models/generic.model';
 import { User } from 'src/app/models/user.model';
 import { NoteService } from 'src/app/services/note/note.service';
@@ -47,12 +49,12 @@ export class LoginComponent implements OnInit {
             this.message = 'Usuário ou Senha não encontrado';
           } else {
             this.userService.setIdUserLoggedLocalData(res.id!);
-            this.noteService.setNotesLocalDataToLogin(res.id!);
+            this.noteService.getNoteListLocalData() && this.noteService.setNotesLocalDataToLogin(res.id!);
             this.message = 'Usuário Logado com Sucesso';
             this.router.navigate(['/']);
             this.userService.getUserLoggedData(res.id!)
               .subscribe(
-                (res: User) => this.userService.setNameUserLocalData(res.nome!),
+                (res: User) => this.userService.setNameUserLocalData(res.name!),
                 () => this.snackbarService.open('Problemas para coletar o nome do usuário', 'snackbar-error')
               )
           }

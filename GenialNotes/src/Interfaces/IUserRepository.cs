@@ -9,5 +9,6 @@ namespace GenialNotes.src.Interfaces
         Task<Usuario> RegisterUser(RegisterUserRequest request);
         Task<List<Usuario>> GetUsers();
         Task<LoginResponse> LoginValidate(string senha, string email);
+        Usuario GetUserById(int id);
     }
 }

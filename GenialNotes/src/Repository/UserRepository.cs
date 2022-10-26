@@ -49,5 +49,11 @@ namespace GenialNotes.src.Repository
 
             return validation;
         }
+
+        public Usuario GetUserById(int id)
+        {
+            var users = _context.Usuarios.Where(x => x.Id == id).FirstOrDefault();
+            return users;
+        }
     }
 }

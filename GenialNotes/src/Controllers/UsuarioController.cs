@@ -28,6 +28,17 @@ namespace GenialNotes.src.Controllers
         }
 
         /// <summary>
+        /// Retorna todos os usuários na base
+        /// </summary>
+        /// <param name="id">Registro de um usuário</param>
+        [HttpGet("Usuario/{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            var result = _userRepository.GetUserById(id);
+            return Ok(result);
+        }
+
+        /// <summary>
         /// Registra um usuário na base
         /// </summary>
         /// <param name="request">Registro de um usuário</param>
@@ -49,6 +60,7 @@ namespace GenialNotes.src.Controllers
             var result = await _userRepository.LoginValidate(senha, email);
             return Ok(result);
         }
+
 
     }
 }

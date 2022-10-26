@@ -9,22 +9,26 @@ import { Note } from 'src/app/models/note.model';
   providedIn: 'root'
 })
 export class NoteService {
-  private readonly API_URL = `https://localhost:7119/api/Nota/`;
+  private readonly API_URL = `https://localhost:7119/api/Nota`;
 
   constructor(
     private http: HttpClient
   ) { }
 
   public setNewNote(note: Note): Observable<Note> {
-    return this.http.post<Note>(`${this.API_URL}Nota`, note);
+    return this.http.post<Note>(`${this.API_URL}`, note);
   }
   
   public getNote(idUsuario: number): Observable<Array<Note>> {
-    return this.http.get<Array<Note>>(`${this.API_URL}Nota/${idUsuario}`);
+    return this.http.get<Array<Note>>(`${this.API_URL}/${idUsuario}`);
   }
 
   public editNote(note: Note): Observable<Note> {
-    return this.http.patch<Note>(`${this.API_URL}Nota/${note.id}`, note);
+    return this.http.patch<Note>(`${this.API_URL}/${note.id}`, note);
+  }
+
+  public deleteNotebyId(idNote: number): Observable<Note> {
+    return this.http.delete<Note>(`${this.API_URL}/${idNote}`);
   }
 
   public setIdNoteLocalData(idNote: number): void {
@@ -62,6 +66,11 @@ export class NoteService {
       }
 
       this.setNewNote(note)
+        .subscribe(
+          () => console.log('Nota adicionada ao banco de dados com sucesso'),
+          () => console.log('Problemas para adicionar a nota ao banco de dados')
+        );
      })
+     this.removeNoteListLocalData();
   }
 }

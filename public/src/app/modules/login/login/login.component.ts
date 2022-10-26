@@ -49,7 +49,12 @@ export class LoginComponent implements OnInit {
             this.userService.setIdUserLoggedLocalData(res.id!);
             this.noteService.setNotesLocalDataToLogin(res.id!);
             this.message = 'Usuário Logado com Sucesso';
-            this.router.navigate(['/'])
+            this.router.navigate(['/']);
+            this.userService.getUserLoggedData(res.id!)
+              .subscribe(
+                (res: User) => this.userService.setNameUserLocalData(res.nome!),
+                () => this.snackbarService.open('Problemas para coletar o nome do usuário', 'snackbar-error')
+              )
           }
         },
         () => { 

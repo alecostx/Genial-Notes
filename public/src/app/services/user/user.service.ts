@@ -8,18 +8,22 @@ import { User } from 'src/app/models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly API_URL = `https://localhost:7119/api/Usuario/`;
+  private readonly API_URL = `https://localhost:7119/api/Usuario`;
 
   constructor(
     private http: HttpClient
   ) { }
 
   public setRegisterUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.API_URL}RegistrarUsuario`, user);
+    return this.http.post<User>(`${this.API_URL}`, user);
+  }
+
+  public getUserLoggedData(idUser: number): Observable<User> {
+    return this.http.get<User>(`${this.API_URL}/${idUser}`);
   }
 
   public getValidateLoginUser(user: User): Observable<User> {
-    return this.http.get<User>(`${this.API_URL}ValidarLogins?senha=${user.senha}&email=${user.email}`);
+    return this.http.get<User>(`${this.API_URL}/${user.email}/${user.senha}`);
   }
 
   public setIdUserLoggedLocalData(idUser: number): void {

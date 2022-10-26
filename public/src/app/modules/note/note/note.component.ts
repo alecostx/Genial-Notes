@@ -84,6 +84,24 @@ export class NoteComponent implements OnInit {
     this.setToggleEditNote();
   }
 
+  public deleteNote(note: Note): void {
+    if (this.noteService.getNoteListLocalData()) {
+      this.noteList = this.noteList.filter((res: Note) => res.id !== note.id);
+
+      this.noteService.removeNoteListLocalData();
+      this.noteList.length > 0 && this.noteService.setNoteListLocalData(this.noteList);
+      this.getNoteList();
+      this.snackbarService.open('Nota deletada com sucesso', 'snackbar-done');
+    } else {
+      this.noteService
+        .deleteNotebyId(note.id!)
+        .subscribe(
+          () => this.snackbarService.open('Nota deletada com sucesso', 'snackbar-done'),
+          () => this.snackbarService.open('Problemas para deletar a nota', 'snackbar-error')
+        );
+    }
+  }
+
   public editNote(idNote: number): void {
     this.loading = true;
 
@@ -94,10 +112,15 @@ export class NoteComponent implements OnInit {
       idUsuario: this.idUsuario
     }
 
-    console.log(this.noteService.getIdNoteLocalData());
     if (this.noteService.getNoteListLocalData()){
-      this.noteList[idNote] = note;
-      console.log(idNote);
+      this.noteList.forEach(
+        (res: Note) => {
+          if(res.id === idNote) {
+            res.titulo = note.titulo;
+            res.descricao = note.descricao;
+            return;
+          }
+        });
 
       this.noteService.removeNoteListLocalData();
       this.noteService.setNoteListLocalData(this.noteList);

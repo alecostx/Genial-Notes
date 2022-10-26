@@ -28,10 +28,14 @@
     margin-bottom: 10px;
 }
 
-.note:hover > .note-local-data{
+.note:hover > .note-local-data {
     cursor: pointer;
     border-bottom: 3px solid var(--destak-secundary-color);
     transition: .3s;
+}
+
+.note:hover .delete-note {
+    display: block;
 }
 
 .not-selected {
@@ -55,6 +59,7 @@
     border-bottom: 3px solid var(--background-secundary-color);
     width: 80%;
     transition: .3s;
+    position: relative;
 }
 
 .note-local-data p,h2 {
@@ -118,6 +123,14 @@ textarea {
 
 .note-empty {
     color: var(--text-color);
+}
+
+.delete-note {
+    display: none;
+    position: absolute;
+    color: var(--error-color);
+    right: 0;
+    bottom: 8px;
 }
 
 @media (max-width: 1024px) {

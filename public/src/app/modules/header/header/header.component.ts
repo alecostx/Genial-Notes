@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NoteService } from 'src/app/services/note/note.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
   public isOpenNavBar: boolean = false;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private noteService: NoteService
   ) { }
 
   ngOnInit(): void {
@@ -26,5 +28,13 @@ export class HeaderComponent implements OnInit {
 
   public setToggleNavBar(): void {
     this.isOpenNavBar = this.isOpenNavBar ? false : true;
+  }
+
+  public clearCredentials(): void {
+    this.userService.removeIdUserLoggedLocalData();
+    this.userService.removeNameUserLocalData();
+    this.noteService.removeIdNoteLocalData();
+    this.noteService.removeNoteListLocalData();
+    this.setToggleNavBar();
   }
 }

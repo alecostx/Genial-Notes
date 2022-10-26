@@ -11,6 +11,7 @@
             <span class="hover-header">Desenvolvedores</span>
         </li>
         <li *ngIf="isLoggedUser">Olá, {{ nameUser }}</li>
+        <li *ngIf="isLoggedUser" routerLink="/" class="button register" (click)="clearCredentials()">Sair</li>
         <li *ngIf="!isLoggedUser" routerLink="/login" (click)="setToggleNavBar()">
             <span>Login</span>
             <span class="hover-header" (click)="setToggleNavBar()">Login</span>

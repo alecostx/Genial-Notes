@@ -10,6 +10,7 @@
                 <div class="note-local-data">
                     <h2>{{ note.titulo }}</h2>
                     <p>{{ note.descricao }}</p>
+                    <mat-icon class="delete-note" (click)="deleteNote(note)">delete</mat-icon>
                 </div>
             </div>
             <div class="note note-empty" *ngIf="!noteList.length">

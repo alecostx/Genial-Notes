@@ -51,9 +51,9 @@ namespace GenialNotes.src.Controllers
 
         /// <summary>
         /// Realiza a validação de login do usuário
-        /// /// <param name="senha">Código de identificação da conta na Genial</param>
-        /// /// <param name="email">Código de identificação da conta na Genial</param>
         /// </summary>
+        ///         /// <param name="senha">Código de identificação da conta na Genial</param>
+        /// <param name="email">Código de identificação da conta na Genial</param>
         [HttpGet("{email}/{senha}")]
         public async Task<IActionResult> LoginValidate(string senha, string email)
         {

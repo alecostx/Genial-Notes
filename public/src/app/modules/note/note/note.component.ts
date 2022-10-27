@@ -29,8 +29,8 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
     this.setValidatorsForm();
     this.idUsuario = this.userService.getIdUserLoggedLocalData() ? this.userService.getIdUserLoggedLocalData() : 0;
-    this.getNoteList();
     this.removeNoteLocalData();
+    this.getNoteList();
   }
 
   public setCreateOrEditNote(): void {
